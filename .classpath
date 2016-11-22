@@ -1,0 +1,378 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/scala"/>
+  <classpathentry kind="src" path="src/main/resources"/>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-core/srcs/flink-core-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-core/jars/flink-core-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-core/docs/flink-core-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-annotations/srcs/flink-annotations-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-annotations/jars/flink-annotations-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-annotations/docs/flink-annotations-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.google.code.findbugs/jsr305/srcs/jsr305-1.3.9-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.google.code.findbugs/jsr305/docs/jsr305-1.3.9-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.commons/commons-lang3/srcs/commons-lang3-3.3.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.3.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.commons/commons-lang3/docs/commons-lang3-3.3.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.slf4j/slf4j-api/srcs/slf4j-api-1.7.10-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.10.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.slf4j/slf4j-api/docs/slf4j-api-1.7.10-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/log4j/log4j/srcs/log4j-1.2.17-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/log4j/log4j/bundles/log4j-1.2.17.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/log4j/log4j/docs/log4j-1.2.17-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/force-shading/jars/force-shading-1.1.3.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-metrics-core/srcs/flink-metrics-core-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-metrics-core/jars/flink-metrics-core-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-metrics-core/docs/flink-metrics-core-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.esotericsoftware.kryo/kryo/srcs/kryo-2.24.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.esotericsoftware.kryo/kryo/bundles/kryo-2.24.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.esotericsoftware.kryo/kryo/docs/kryo-2.24.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.esotericsoftware.minlog/minlog/srcs/minlog-1.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.esotericsoftware.minlog/minlog/jars/minlog-1.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.esotericsoftware.minlog/minlog/docs/minlog-1.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.objenesis/objenesis/srcs/objenesis-2.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-2.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.objenesis/objenesis/docs/objenesis-2.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.avro/avro/srcs/avro-1.7.6-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.avro/avro/bundles/avro-1.7.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.avro/avro/docs/avro-1.7.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-core-asl/srcs/jackson-core-asl-1.9.13-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-core-asl/jars/jackson-core-asl-1.9.13.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-core-asl/docs/jackson-core-asl-1.9.13-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-mapper-asl/srcs/jackson-mapper-asl-1.9.13-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-mapper-asl/jars/jackson-mapper-asl-1.9.13.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.codehaus.jackson/jackson-mapper-asl/docs/jackson-mapper-asl-1.9.13-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.thoughtworks.paranamer/paranamer/srcs/paranamer-2.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.thoughtworks.paranamer/paranamer/jars/paranamer-2.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.thoughtworks.paranamer/paranamer/docs/paranamer-2.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-shaded-hadoop2/srcs/flink-shaded-hadoop2-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-shaded-hadoop2/jars/flink-shaded-hadoop2-1.1.3.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-cli/commons-cli/srcs/commons-cli-1.3.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-cli/commons-cli/jars/commons-cli-1.3.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-cli/commons-cli/docs/commons-cli-1.3.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.commons/commons-math3/srcs/commons-math3-3.5-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.commons/commons-math3/jars/commons-math3-3.5.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.commons/commons-math3/docs/commons-math3-3.5-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="lib" path="/Users/mujha/.ivy2/cache/xmlenc/xmlenc/jars/xmlenc-0.52.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-codec/commons-codec/srcs/commons-codec-1.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-codec/commons-codec/docs/commons-codec-1.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-io/commons-io/srcs/commons-io-2.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-io/commons-io/docs/commons-io-2.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-net/commons-net/srcs/commons-net-3.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-net/commons-net/jars/commons-net-3.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-net/commons-net/docs/commons-net-3.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-collections/commons-collections/srcs/commons-collections-3.2.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-collections/commons-collections/jars/commons-collections-3.2.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-collections/commons-collections/docs/commons-collections-3.2.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/javax.servlet/servlet-api/srcs/servlet-api-2.5-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/javax.servlet/servlet-api/jars/servlet-api-2.5.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.mortbay.jetty/jetty-util/srcs/jetty-util-6.1.26-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.mortbay.jetty/jetty-util/jars/jetty-util-6.1.26.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.mortbay.jetty/jetty-util/docs/jetty-util-6.1.26-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.sun.jersey/jersey-core/srcs/jersey-core-1.9-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.sun.jersey/jersey-core/bundles/jersey-core-1.9.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.sun.jersey/jersey-core/docs/jersey-core-1.9-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-logging/commons-logging/srcs/commons-logging-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-logging/commons-logging/docs/commons-logging-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.jamesmurty.utils/java-xmlbuilder/srcs/java-xmlbuilder-0.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.jamesmurty.utils/java-xmlbuilder/jars/java-xmlbuilder-0.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.jamesmurty.utils/java-xmlbuilder/docs/java-xmlbuilder-0.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-lang/commons-lang/srcs/commons-lang-2.6-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-lang/commons-lang/jars/commons-lang-2.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-lang/commons-lang/docs/commons-lang-2.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-configuration/commons-configuration/srcs/commons-configuration-1.7-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-configuration/commons-configuration/jars/commons-configuration-1.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-configuration/commons-configuration/docs/commons-configuration-1.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-digester/commons-digester/srcs/commons-digester-1.8.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-digester/commons-digester/jars/commons-digester-1.8.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-digester/commons-digester/docs/commons-digester-1.8.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.xerial.snappy/snappy-java/srcs/snappy-java-1.0.5-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.xerial.snappy/snappy-java/bundles/snappy-java-1.0.5.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.xerial.snappy/snappy-java/docs/snappy-java-1.0.5-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.jcraft/jsch/srcs/jsch-0.1.42-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.jcraft/jsch/jars/jsch-0.1.42.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.zookeeper/zookeeper/srcs/zookeeper-3.4.6-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.zookeeper/zookeeper/jars/zookeeper-3.4.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.zookeeper/zookeeper/docs/zookeeper-3.4.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.commons/commons-compress/srcs/commons-compress-1.4.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.4.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.commons/commons-compress/docs/commons-compress-1.4.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.tukaani/xz/srcs/xz-1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.tukaani/xz/jars/xz-1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.tukaani/xz/docs/xz-1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="lib" path="/Users/mujha/.ivy2/cache/commons-beanutils/commons-beanutils-bean-collections/jars/commons-beanutils-bean-collections-1.8.3.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-daemon/commons-daemon/srcs/commons-daemon-1.0.13-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-daemon/commons-daemon/jars/commons-daemon-1.0.13.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-daemon/commons-daemon/docs/commons-daemon-1.0.13-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/javax.xml.bind/jaxb-api/srcs/jaxb-api-2.2.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/javax.xml.bind/jaxb-api/jars/jaxb-api-2.2.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/javax.xml.bind/jaxb-api/docs/jaxb-api-2.2.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/javax.xml.stream/stax-api/srcs/stax-api-1.0-2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/javax.xml.stream/stax-api/jars/stax-api-1.0-2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/javax.xml.stream/stax-api/docs/stax-api-1.0-2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/javax.activation/activation/srcs/activation-1.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/javax.activation/activation/jars/activation-1.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/javax.activation/activation/docs/activation-1.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.google.inject/guice/srcs/guice-3.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.google.inject/guice/jars/guice-3.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.google.inject/guice/docs/guice-3.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/javax.inject/javax.inject/srcs/javax.inject-1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/javax.inject/javax.inject/docs/javax.inject-1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/aopalliance/aopalliance/srcs/aopalliance-1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/aopalliance/aopalliance/docs/aopalliance-1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.sonatype.sisu.inject/cglib/srcs/cglib-2.2.1-v20090111-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.sonatype.sisu.inject/cglib/jars/cglib-2.2.1-v20090111.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.sonatype.sisu.inject/cglib/docs/cglib-2.2.1-v20090111-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/asm/asm/srcs/asm-3.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/asm/asm/jars/asm-3.1.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/commons-el/commons-el/srcs/commons-el-1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/commons-el/commons-el/jars/commons-el-1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/commons-el/commons-el/docs/commons-el-1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-scala_2.11/srcs/flink-scala_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-scala_2.11/jars/flink-scala_2.11-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-scala_2.11/docs/flink-scala_2.11-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-java/srcs/flink-java-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-java/jars/flink-java-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-java/docs/flink-java-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-optimizer_2.11/srcs/flink-optimizer_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-optimizer_2.11/jars/flink-optimizer_2.11-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-optimizer_2.11/docs/flink-optimizer_2.11-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-runtime_2.11/srcs/flink-runtime_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-runtime_2.11/jars/flink-runtime_2.11-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-runtime_2.11/docs/flink-runtime_2.11-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/io.netty/netty-all/srcs/netty-all-4.0.27.Final-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/io.netty/netty-all/jars/netty-all-4.0.27.Final.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/io.netty/netty-all/docs/netty-all-4.0.27.Final-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.18.2-GA-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.18.2-GA.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.javassist/javassist/docs/javassist-3.18.2-GA-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/srcs/akka-actor_2.11-2.3.7-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/docs/akka-actor_2.11-2.3.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.typesafe/config/srcs/config-1.2.1-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.typesafe/config/bundles/config-1.2.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.typesafe/config/docs/config-1.2.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-remote_2.11/srcs/akka-remote_2.11-2.3.7-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-remote_2.11/jars/akka-remote_2.11-2.3.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-remote_2.11/docs/akka-remote_2.11-2.3.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/io.netty/netty/srcs/netty-3.8.0.Final-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/io.netty/netty/bundles/netty-3.8.0.Final.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/io.netty/netty/docs/netty-3.8.0.Final-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.google.protobuf/protobuf-java/srcs/protobuf-java-2.5.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.google.protobuf/protobuf-java/bundles/protobuf-java-2.5.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.google.protobuf/protobuf-java/docs/protobuf-java-2.5.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.uncommons.maths/uncommons-maths/srcs/uncommons-maths-1.2.2a-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.uncommons.maths/uncommons-maths/jars/uncommons-maths-1.2.2a.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.uncommons.maths/uncommons-maths/docs/uncommons-maths-1.2.2a-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/srcs/akka-slf4j_2.11-2.3.7-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/docs/akka-slf4j_2.11-2.3.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.clapper/grizzled-slf4j_2.11/srcs/grizzled-slf4j_2.11-1.0.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.clapper/grizzled-slf4j_2.11/jars/grizzled-slf4j_2.11-1.0.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.clapper/grizzled-slf4j_2.11/docs/grizzled-slf4j_2.11-1.0.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.github.scopt/scopt_2.11/srcs/scopt_2.11-3.2.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.github.scopt/scopt_2.11/jars/scopt_2.11-3.2.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.github.scopt/scopt_2.11/docs/scopt_2.11-3.2.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-core/srcs/metrics-core-3.1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-core/bundles/metrics-core-3.1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-core/docs/metrics-core-3.1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-jvm/srcs/metrics-jvm-3.1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-jvm/bundles/metrics-jvm-3.1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-jvm/docs/metrics-jvm-3.1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-json/srcs/metrics-json-3.1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-json/bundles/metrics-json-3.1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/io.dropwizard.metrics/metrics-json/docs/metrics-json-3.1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/srcs/jackson-databind-2.4.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.4.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/docs/jackson-databind-2.4.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/srcs/jackson-annotations-2.4.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.4.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/docs/jackson-annotations-2.4.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/srcs/jackson-core-2.4.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.4.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/docs/jackson-core-2.4.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.twitter/chill_2.11/srcs/chill_2.11-0.7.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.twitter/chill_2.11/jars/chill_2.11-0.7.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.twitter/chill_2.11/docs/chill_2.11-0.7.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.twitter/chill-java/srcs/chill-java-0.7.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.twitter/chill-java/jars/chill-java-0.7.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.twitter/chill-java/docs/chill-java-0.7.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/srcs/scala-xml_2.11-1.0.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/docs/scala-xml_2.11-1.0.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/srcs/scala-parser-combinators_2.11-1.0.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/docs/scala-parser-combinators_2.11-1.0.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-clients_2.11/srcs/flink-clients_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-clients_2.11/jars/flink-clients_2.11-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-clients_2.11/docs/flink-clients_2.11-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-streaming-scala_2.11/srcs/flink-streaming-scala_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-streaming-scala_2.11/jars/flink-streaming-scala_2.11-1.1.3.jar"/>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.flink/flink-streaming-java_2.11/srcs/flink-streaming-java_2.11-1.1.3-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.flink/flink-streaming-java_2.11/jars/flink-streaming-java_2.11-1.1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.flink/flink-streaming-java_2.11/docs/flink-streaming-java_2.11-1.1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.apache.sling/org.apache.sling.commons.json/srcs/org.apache.sling.commons.json-2.0.6-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.apache.sling/org.apache.sling.commons.json/bundles/org.apache.sling.commons.json-2.0.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.apache.sling/org.apache.sling.commons.json/docs/org.apache.sling.commons.json-2.0.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/srcs/scala-logging_2.11-3.1.0-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/jars/scala-logging_2.11-3.1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/docs/scala-logging_2.11-3.1.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/ch.qos.logback/logback-classic/srcs/logback-classic-1.1.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/ch.qos.logback/logback-classic/docs/logback-classic-1.1.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/ch.qos.logback/logback-core/srcs/logback-core-1.1.2-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/ch.qos.logback/logback-core/docs/logback-core-1.1.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/mujha/.ivy2/cache/org.scalatest/scalatest_2.11/srcs/scalatest_2.11-2.2.4-sources.jar" kind="lib" path="/Users/mujha/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/mujha/.ivy2/cache/org.scalatest/scalatest_2.11/docs/scalatest_2.11-2.2.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="lib" path="/Users/mujha/.ivy2/cache/org.scoverage/scalac-scoverage-runtime_2.11/jars/scalac-scoverage-runtime_2.11-1.0.4.jar"/>
+  <classpathentry kind="lib" path="/Users/mujha/.ivy2/cache/org.scoverage/scalac-scoverage-plugin_2.11/jars/scalac-scoverage-plugin_2.11-1.0.4.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>
