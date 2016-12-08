@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.mj.flink</groupId>
+	<artifactId>apache-flink-sample</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<name>Apache Flink Examples</name>
+	<url>https://github.com/mukh007</url>
+	<inceptionYear>2016</inceptionYear>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<flink.version>1.1.3</flink.version>
+		<scala.binary.version>2.11</scala.binary.version>
+		<scala.version>2.11.8</scala.version>
+		<jackson.version>2.7.5</jackson.version>
+		<slf4j.version>1.7.19</slf4j.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.mj.misc</groupId>
+			<artifactId>misc_tools</artifactId>
+			<version>[0.0,1.0)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-java</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-scala_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-gelly_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-table_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-gelly-scala_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-connector-kafka-0.9_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-connector-elasticsearch2_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.influxdb</groupId>
+			<artifactId>influxdb-java</artifactId>
+			<version>2.3</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Scala Compiler -->
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>3.1.4</version>
+				<executions>
+					<!-- Run scala compiler in the process-resources phase, so that dependencies 
+						on scala classes can be resolved later in the (Java) compile phase -->
+					<execution>
+						<id>scala-compile-first</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+
+					<!-- Run scala compiler in the process-test-resources phase, so that 
+						dependencies on scala classes can be resolved later in the (Java) test-compile 
+						phase -->
+					<execution>
+						<id>scala-test-compile</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jvmArgs>
+						<jvmArg>-Xms128m</jvmArg>
+						<jvmArg>-Xmx512m</jvmArg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version><!--$NO-MVN-MAN-VER$ -->
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<quiet>true</quiet>
+					<additionalparam>-Xdoclint:none</additionalparam>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+
+					<!-- MBoxParser -->
+					<execution>
+						<id>MBoxParser</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+
+						<configuration>
+							<classifier>MBoxParser</classifier>
+
+							<archive>
+								<manifestEntries>
+									<main-class>org.mj.flink.example.streaming.StreamingWordCount</main-class>
+								</manifestEntries>
+							</archive>
+
+							<includes>
+								<include>**/MBoxParser.class</include>
+								<include>**/MBoxParser$*.class</include>
+							</includes>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.12.1</version>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<configLocation>/tools/maven/checkstyle.xml</configLocation>
+					<logViolationsToConsole>true</logViolationsToConsole>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<finalName>${project.artifactId}</finalName>
+					<archive>
+						<manifest>
+							<mainClass>com.oracle.ci.sampler.SparkNewHBaseSampler</mainClass>
+						</manifest>
+					</archive>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
