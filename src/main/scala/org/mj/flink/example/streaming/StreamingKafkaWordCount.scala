@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import java.util.Properties
 
 /**
- * /pkg/flink/bin/flink run -c org.mj.flink.example.streaming.StreamingWordCount target/apache-flink-sample.jar
+ * /pkg/flink/bin/flink run -c org.mj.flink.example.streaming.StreamingKafkaWordCount target/apache-flink-sample.jar
  */
-object StreamingWordCount {
+object StreamingKafkaWordCount {
   private val LOG = LoggerFactory.getLogger(getClass)
 
   def main(args: Array[String]): Unit = kafkaConsumerProducerDemo(args)
