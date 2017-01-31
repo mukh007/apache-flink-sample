@@ -1,0 +1,10 @@
+inputTopicName: "testIn1"
+replayTopicName: "testIn2"
+outputTopicName: "testOut"
+kafkaConsumerConf:
+  bootstrap.servers: localhost:9092
+  group.id: cg
+  enable.auto.commit: true
+  auto.offset.reset: earliest
+kafkaProducerConf:
+  bootstrap.servers: localhost:9092

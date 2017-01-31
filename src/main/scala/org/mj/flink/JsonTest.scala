@@ -1,0 +1,10 @@
+package org.mj.flink
+
+import org.mj.json.JsonSerDe
+
+object JsonTest {
+  def main(args: Array[String]): Unit = {
+    val jsonStr = "{\"canonical_envelope\":{\"message\":{\"posted_at\":\"2016-10-19T17:16:38Z\",\"url\":\"http://twitter.com/MECANICA2002/status/788790976370372608\",\"id\":1431694322117232529,\"content_sub_type\":\"post\",\"collection_strategy\":\"normal\",\"data_source_context\":\"twitter_micro_blog_gnip\",\"data_source_message\":{\"type\":\"generic_data_source_message\",\"id\":\"788790976370372608\"},\"language_tag\":\"pt\",\"provider_language_code\":\"pt\",\"author\":{\"name\":\"MECANICA2002\",\"created_at\":\"2011-08-05T20:06:50Z\",\"display_name\":\"AUTO MECANICA 2002\",\"description\":\"confian\u00E7a n\u00E3o se vende,se conquista! venha e confira!\",\"location\":{\"country\":\"br\",\"region\":\"br_santa_catarina\",\"latitude\":-27.0,\"longitude\":-50.0,\"display_name\":\"Santa Catarina, Brazil\"},\"image_url\":\"https://pbs.twimg.com/profile_images/378800000006958327/e7724d2bcd8e45e3fa9292d6acdeee46_normal.jpeg\",\"profile_url\":\"http://twitter.com/MECANICA2002\",\"klout_score\":15,\"data_source_author\":{\"type\":\"extended_data_source_author\",\"id\":\"349246341\",\"statuses_count\":855,\"followers_count\":195,\"friends_count\":175}},\"source\":{\"url\":\"http://twitter.com\",\"name\":\"Twitter\"},\"key\":\"BQYEAQZCiRPeZmaIvceR\",\"named_media\":[{\"ordinal\":0,\"name\":\"body\",\"media_type\":\"text\",\"enrichments\":null,\"media_data\":{\"text\":\"Procedimento de troca de fluido de freio via aparelho,padr\u00E3o\uDBBA\uDF96\\n\uDBB9\uDCCB\uDBB9\uDCCB\uDBB9\uDCCB\uDBB9\uDCCB\uDBB9\uDCCB\\nAgende seu hor\u00E1rio whatsapp 48-98006182\\n\uDBB9\uDCC9\uDBB9\uDCC9\uDBB9\uDCC9\uDBB9\uDCC9\uDBB9\uDCC9... https://www.facebook.com/photo.php?fbid=785041194931685\"}}],\"publik\":true,\"received_at\":\"2016-10-19T17:16:51Z\"},\"pipeline_system\":\"realtime\"}}"
+    JsonSerDe.deserialize[String](jsonStr)
+  }  
+}
