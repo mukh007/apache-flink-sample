@@ -5,6 +5,7 @@ import java.util.concurrent.TimeoutException
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest}
 import akka.pattern.Patterns.after
+import akka.stream.ActorMaterializer
 import com.typesafe.scalalogging.LazyLogging
 import org.mj.flink.http.akka.AkkaHttpClient
 
@@ -17,6 +18,7 @@ object BackOffRetryException extends Throwable
 object BackOffRetry extends App with LazyLogging {
   private implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
   private implicit val as: ActorSystem = ActorSystem("mj_retry")
+  private implicit val mat: ActorMaterializer = ActorMaterializer()
 
   private lazy val retryHandler = new BackOffRetry
   val retryFuture = retryHandler.retryWithBackOff(getFutureRequest(Random.nextInt(50)), factor = 10f, initialWaitInMS = 1)
@@ -29,8 +31,12 @@ object BackOffRetry extends App with LazyLogging {
   //  printResult(httpFuture)
 
   val httpResponses = httpHandler.runHttpRequests(Seq.fill(100)(postRequest))
-  httpResponses.map(retryHandler.printResult(_))
-  httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
+  retryHandler.printResult(httpResponses)
+//  httpResponses.map(retryHandler.printResult(_))
+  println(s"\n\nFinal results :: ${httpResponses.value.get.get.size}")
+//  httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
+  httpResponses.value.map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
+//  httpResponses.value.flatMap(_.get).map(_.status.intValue).groupBy(identity).mapValues(_.size).map(println)
 
   System.exit(-1)
 

@@ -16,6 +16,7 @@ import scala.util.{Failure, Success}
 object AkkaHttpClient extends LazyLogging {
   private implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
   private implicit val as: ActorSystem = ActorSystem("mj_http")
+  private implicit val mat: ActorMaterializer = ActorMaterializer()
 
   private lazy val httpClient = new AkkaHttpClient
   private lazy val retryHandler = new BackOffRetry
@@ -34,33 +35,49 @@ object AkkaHttpClient extends LazyLogging {
     //    Thread.sleep(5000)
     //    httpResponses.flatMap(_).foreach(r => {})
     //    val r = httpResponses.map(_.value).toSeq
-    httpResponses.map(retryHandler.printResult(_))
+    retryHandler.printResult(httpResponses)
+    //    httpResponses.map(retryHandler.printResult(_))
 
-    logger.info("Final Results")
-    httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
+    logger.info(s"Final Results ${httpResponses.value}")
+    println(s"Final results ${httpResponses.value.get}")
+    //    httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
 
     System.exit(-1)
   }
 }
 
+sealed case class CIHttpRespose(responseCode: Int, responseBody: String) {}
+
 class AkkaHttpClient extends LazyLogging {
   private lazy val retryHandler = new BackOffRetry
 
-  def runHttpRequests(httpRequests: GenSeq[HttpRequest])(implicit ac: ActorSystem, ec: ExecutionContext): GenSeq[Future[HttpResponse]] = {
-    val httpResponses = httpRequests.map(httpRequest => {
+  def runHttpRequests(httpRequests: GenSeq[HttpRequest])(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer) = { //: Future[GenSeq[HttpResponse]] = {
+    val httpResponses = for (httpRequest <- httpRequests) yield {
       val responseFuture = retryHandler.retryWithBackOff(Http(ac).singleRequest(httpRequest), initialWaitInMS = 10, maxAllowedWaitInMS = 60000, maxAllowedRetryCount = 20)
-
       responseFuture.onComplete {
         case Success(httpResponse) =>
-          logger.info(s"Finished[${httpRequest.uri}] : ${httpResponse.status}")
+          logger.info(s"Finished[${httpRequest.method} ${httpRequest.uri}] : ${httpResponse.status}")
         case Failure(ex) =>
           logger.error(s"Failed: $ex")
       }
-      responseFuture
-    })
-    httpResponses
+
+//      val responseBody = for {
+//        response <- responseFuture
+//        entity <- Unmarshal(response.entity).to[ByteString]
+//      } yield entity.utf8String
+      val responseBody = responseFuture.flatMap(r => Unmarshal(r.entity).to[ByteString]).map(_.utf8String)
+      //val responseCode = responseFuture.map(_.status)
+
+      //responseFuture
+      responseBody
+    }
+    Future.sequence(httpResponses.toList)
   }
 
+  //  def runHttpRequest(httpRequest: HttpRequest)(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[HttpResponse] = {
+  //    val res = runHttpRequests(Seq(httpRequest))
+  //    res.map(_.head)
+  //  }
   def runHttpRequest(httpRequest: HttpRequest)(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[Array[String]] = {
     val responseFuture = for {
       response <- Http(ac).singleRequest(httpRequest)

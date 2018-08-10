@@ -3,8 +3,10 @@ package org.mj.flink.streaming.async
 import java.util.concurrent.TimeUnit
 
 import akka.actor.ActorSystem
-import akka.http.scaladsl.model.HttpRequest
+import akka.http.scaladsl.model.Uri.Query
+import akka.http.scaladsl.model.{HttpMethods, HttpRequest, Uri}
 import akka.stream.ActorMaterializer
+import com.typesafe.scalalogging.LazyLogging
 import org.apache.flink.runtime.concurrent.Executors
 import org.apache.flink.streaming.api.functions.source.ParallelSourceFunction
 import org.apache.flink.streaming.api.functions.source.SourceFunction.SourceContext
@@ -12,10 +14,11 @@ import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.api.scala.async.ResultFuture
 import org.mj.flink.http.akka.AkkaHttpClient
 
+import scala.collection.GenSeq
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Random, Success}
 
-object AsyncIOExample {
+object AsyncIOExample extends LazyLogging {
   private implicit lazy val ec: ExecutionContext = ExecutionContext.fromExecutor(Executors.directExecutor())
   private implicit val as: ActorSystem = ActorSystem("mj_asyncIO")
   private implicit val mat: ActorMaterializer = ActorMaterializer()
@@ -31,10 +34,15 @@ object AsyncIOExample {
 
     val input = env.addSource(new SimpleSource())
 
-    // till 8 is fine as 32=8*4 (parallelism) actor system max concurrent connection setting
-    val asyncMapped = AsyncDataStream.orderedWait(input, 10000L, TimeUnit.MILLISECONDS, 2) {
-      (input, resultFuture: ResultFuture[Array[String]]) => {
-        val res = httpClient.runHttpRequest(HttpRequest(uri = "http://example.org/"))
+    // till 4*2 is fine as 32=8*4 (parallelism) actor system max concurrent connection setting
+    val asyncMapped = AsyncDataStream.orderedWait(input, 10000L, TimeUnit.MILLISECONDS, 5) {
+      (input, resultFuture: ResultFuture[GenSeq[String]]) => {
+        val url = "http://example.org/"
+        val uri = Uri(url).withQuery(Query("id" -> s"$input", "n" -> "m"))
+        val getRequest = HttpRequest().withUri(uri).withMethod(HttpMethods.GET)
+        val postRequest = HttpRequest().withUri(uri).withMethod(HttpMethods.POST).withEntity("{json:1}")
+
+        val res = httpClient.runHttpRequests(Seq(getRequest, postRequest))
         res.onComplete({
           case Success(result) => resultFuture.complete(Iterable(result))
           case Failure(ex) => resultFuture.completeExceptionally(ex)
@@ -42,9 +50,14 @@ object AsyncIOExample {
       }
     }
 
-    asyncMapped.addSink(ip => {
-      println(s"Sink: ${ip.mkString("").replace("\n", " ").split(" ").head}")
-    })
+    asyncMapped
+      .flatMap(_.toIterator)
+      .addSink(ip => {
+        logger.info(s"Sink: ${ip.length}")
+      })
+    //    asyncMapped.addSink(ip => {
+    //      println(s"Sink: ${ip.mkString("").replace("\n", " ").split(" ").head}")
+    //    })
 
     env.execute("Async I/O job")
   }
