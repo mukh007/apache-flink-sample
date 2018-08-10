@@ -11,7 +11,7 @@ import org.mj.flink.akka.retry.BackOffRetry
 
 import scala.collection.GenSeq
 import scala.concurrent.{ExecutionContext, Future}
-import scala.util.{Failure, Success}
+import scala.util.{Failure, Random, Success}
 
 object AkkaHttpClient extends LazyLogging {
   private implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
@@ -35,7 +35,7 @@ object AkkaHttpClient extends LazyLogging {
     //    Thread.sleep(5000)
     //    httpResponses.flatMap(_).foreach(r => {})
     //    val r = httpResponses.map(_.value).toSeq
-    retryHandler.printResult(httpResponses)
+    //    retryHandler.printResult(httpResponses)
     //    httpResponses.map(retryHandler.printResult(_))
 
     logger.info(s"Final Results ${httpResponses.value}")
@@ -46,55 +46,38 @@ object AkkaHttpClient extends LazyLogging {
   }
 }
 
-sealed case class CIHttpRespose(responseCode: Int, responseBody: String) {}
+sealed case class MyHttpRespose(responseBody: String, responseCode: StatusCode)
 
 class AkkaHttpClient extends LazyLogging {
   private lazy val retryHandler = new BackOffRetry
 
-  def runHttpRequests(httpRequests: GenSeq[HttpRequest])(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer) = { //: Future[GenSeq[HttpResponse]] = {
+  def runHttpRequests(httpRequests: GenSeq[HttpRequest])(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[GenSeq[MyHttpRespose]] = {
     val httpResponses = for (httpRequest <- httpRequests) yield {
-      val responseFuture = retryHandler.retryWithBackOff(Http(ac).singleRequest(httpRequest), initialWaitInMS = 10, maxAllowedWaitInMS = 60000, maxAllowedRetryCount = 20)
+      val httpFutureRequest = {
+        if (Random.nextInt(100) < 5) // Inject 5% failures
+          Future.failed(new IllegalArgumentException("random failure"))
+        else
+          Http(ac).singleRequest(httpRequest)
+      }
+      val responseFuture = retryHandler.retryWithBackOff(httpFutureRequest, factor = 1, initialWaitInMS = 1, maxAllowedWaitInMS = 60000, maxAllowedRetryCount = 20)
       responseFuture.onComplete {
         case Success(httpResponse) =>
+          Thread.sleep(100 + Random.nextInt(3000)) // Mock service call delay
           logger.info(s"Finished[${httpRequest.method} ${httpRequest.uri}] : ${httpResponse.status}")
         case Failure(ex) =>
           logger.error(s"Failed: $ex")
       }
 
-//      val responseBody = for {
-//        response <- responseFuture
-//        entity <- Unmarshal(response.entity).to[ByteString]
-//      } yield entity.utf8String
-      val responseBody = responseFuture.flatMap(r => Unmarshal(r.entity).to[ByteString]).map(_.utf8String)
-      //val responseCode = responseFuture.map(_.status)
-
-      //responseFuture
+      val responseBody = for {
+        response <- responseFuture
+        entity <- Unmarshal(response.entity).to[ByteString]
+      } yield MyHttpRespose(entity.utf8String, response.status)
       responseBody
     }
-    Future.sequence(httpResponses.toList)
+    Future.sequence(httpResponses.toVector)
   }
 
-  //  def runHttpRequest(httpRequest: HttpRequest)(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[HttpResponse] = {
-  //    val res = runHttpRequests(Seq(httpRequest))
-  //    res.map(_.head)
-  //  }
-  def runHttpRequest(httpRequest: HttpRequest)(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[Array[String]] = {
-    val responseFuture = for {
-      response <- Http(ac).singleRequest(httpRequest)
-      entity <- {
-        val result = Unmarshal(response.entity).to[ByteString]
-        result.map(r => r.utf8String.split(" "))
-      }
-    } yield entity
-
-    responseFuture.onComplete {
-      case Success(entity) => {
-        logger.info(s"Finished[${httpRequest.uri}] : ${entity.length}")
-      }
-      case Failure(ex) => {
-        logger.error(s"Failed: $ex")
-      }
-    }
-    responseFuture
+  def runHttpRequests(httpRequest: HttpRequest)(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[MyHttpRespose] = {
+    runHttpRequests(Seq(httpRequest)).map(_.head)
   }
 }

@@ -10,7 +10,7 @@ import com.typesafe.scalalogging.LazyLogging
 import org.mj.flink.http.akka.AkkaHttpClient
 
 import scala.concurrent.duration._
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.Random
 
 object BackOffRetryException extends Throwable
@@ -22,7 +22,7 @@ object BackOffRetry extends App with LazyLogging {
 
   private lazy val retryHandler = new BackOffRetry
   val retryFuture = retryHandler.retryWithBackOff(getFutureRequest(Random.nextInt(50)), factor = 10f, initialWaitInMS = 1)
-  retryHandler.printResult(retryFuture)
+  //retryHandler.printResult(retryFuture)
 
   private lazy val httpHandler = new AkkaHttpClient
   val url = "http://example.org/"
@@ -31,12 +31,13 @@ object BackOffRetry extends App with LazyLogging {
   //  printResult(httpFuture)
 
   val httpResponses = httpHandler.runHttpRequests(Seq.fill(100)(postRequest))
-  retryHandler.printResult(httpResponses)
-//  httpResponses.map(retryHandler.printResult(_))
+  //  retryHandler.printResult(httpResponses)
+  //  httpResponses.map(retryHandler.printResult(_))
+  Await.result(httpResponses, Duration.Inf)
   println(s"\n\nFinal results :: ${httpResponses.value.get.get.size}")
-//  httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
+  //  httpResponses.map(_.value.get).map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
   httpResponses.value.map(_.isSuccess).groupBy(identity).mapValues(_.size).map(println)
-//  httpResponses.value.flatMap(_.get).map(_.status.intValue).groupBy(identity).mapValues(_.size).map(println)
+  //  httpResponses.value.flatMap(_.get).map(_.status.intValue).groupBy(identity).mapValues(_.size).map(println)
 
   System.exit(-1)
 
@@ -76,17 +77,5 @@ class BackOffRetry extends LazyLogging {
       case e: Exception => attemptRetry(e)
       case t: Throwable => throw t
     }
-  }
-
-  def printResult[T](future: Future[T], log: Boolean = false): Future[T] = {
-    while (!future.isCompleted) Thread.sleep(10)
-    val resultTry = future.value.get
-    if (log && resultTry.isSuccess)
-      logger.info(s"Finished ${resultTry.get}")
-    //println(s"Finished ${result.get.mkString("")}")
-    else if (log && resultTry.isFailure)
-      logger.info(s"Failed $resultTry")
-    else {}
-    future
   }
 }
