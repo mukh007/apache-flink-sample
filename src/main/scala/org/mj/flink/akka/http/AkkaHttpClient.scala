@@ -54,12 +54,12 @@ class AkkaHttpClient extends LazyLogging {
   def runHttpRequests(httpRequests: GenSeq[HttpRequest])(implicit ac: ActorSystem, ec: ExecutionContext, mat: ActorMaterializer): Future[GenSeq[MyHttpRespose]] = {
     val httpResponses = for (httpRequest <- httpRequests) yield {
       val httpFutureRequest = {
-        if (Random.nextInt(100) < 5) // Inject 5% failures
+        if (Random.nextInt(100) < 1) // Inject 1% failures
           Future.failed(new IllegalArgumentException("random failure"))
         else
           Http(ac).singleRequest(httpRequest)
       }
-      val responseFuture = retryHandler.retryWithBackOff(httpFutureRequest, factor = 1, initialWaitInMS = 1, maxAllowedWaitInMS = 60000, maxAllowedRetryCount = 20)
+      val responseFuture = retryHandler.retryWithBackOff(httpFutureRequest, factor = 1, initialWaitInMS = 1, maxAllowedWaitInMS = 4000, maxAllowedRetryCount = 20)
       responseFuture.onComplete {
         case Success(httpResponse) =>
           Thread.sleep(100 + Random.nextInt(3000)) // Mock service call delay
