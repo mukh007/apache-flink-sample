@@ -21,7 +21,7 @@ object BackOffRetry extends App with LazyLogging {
   private implicit val mat: ActorMaterializer = ActorMaterializer()
 
   private lazy val retryHandler = new BackOffRetry
-  val retryFuture = retryHandler.retryWithBackOff(getFutureRequest(Random.nextInt(50)), factor = 10f, initialWaitInMS = 1)
+  val retryFuture = retryHandler.retryWithBackOff(getFutureRequest(Random.nextInt(50)), backOffFactor = 10f, initialWaitInMS = 1)
   //retryHandler.printResult(retryFuture)
 
   private lazy val httpHandler = new AkkaHttpClient
@@ -62,14 +62,14 @@ class BackOffRetry extends LazyLogging {
   private val RETRY_MAX_WAIT_TIME_MS = 100
   private val RETRY_BACK_OFF_FACTOR = 1.5f
 
-  def retryWithBackOff[T](futureRequest: => Future[T], factor: Float = RETRY_BACK_OFF_FACTOR, initialWaitInMS: Int = RETRY_INIT_WAIT_MS, currentWaitInMS: Int = 0, totalWaitInMS: Int = 0, maxAllowedWaitInMS: Int = RETRY_MAX_WAIT_TIME_MS, totalRetryCount: Int = 0, maxAllowedRetryCount: Int = RETRY_MAX_COUNT)(implicit as: ActorSystem, ec: ExecutionContext): Future[T] = {
+  def retryWithBackOff[T](futureRequest: => Future[T], backOffFactor: Float = RETRY_BACK_OFF_FACTOR, initialWaitInMS: Int = RETRY_INIT_WAIT_MS, currentWaitInMS: Int = 0, totalWaitInMS: Int = 0, maxAllowedWaitInMS: Int = RETRY_MAX_WAIT_TIME_MS, totalRetryCount: Int = 0, maxAllowedRetryCount: Int = RETRY_MAX_COUNT)(implicit as: ActorSystem, ec: ExecutionContext): Future[T] = {
     def attemptRetry(e: Exception): Future[T] = {
-      val nextWaitInMS: Int = if (currentWaitInMS == 0) initialWaitInMS else Math.ceil(currentWaitInMS * factor).toInt
+      val nextWaitInMS: Int = if (currentWaitInMS == 0) initialWaitInMS else Math.ceil(currentWaitInMS * backOffFactor).toInt
       logger.warn(s"Retrying #($totalRetryCount/$maxAllowedRetryCount), after $nextWaitInMS ms ($totalWaitInMS/$maxAllowedWaitInMS) ${e.getClass.getSimpleName}")
       if (maxAllowedWaitInMS <= totalWaitInMS | maxAllowedRetryCount <= totalRetryCount)
         Future.failed(new TimeoutException(s"Failing as max retries($totalRetryCount/$maxAllowedRetryCount) or time($totalWaitInMS/$maxAllowedWaitInMS ms) exceeded"))
       else after(nextWaitInMS.milliseconds, as.scheduler, ec, Future.successful(1)).flatMap { _ =>
-        retryWithBackOff(futureRequest, factor, initialWaitInMS, nextWaitInMS, totalWaitInMS + nextWaitInMS, maxAllowedWaitInMS, totalRetryCount + 1, maxAllowedRetryCount)
+        retryWithBackOff(futureRequest, backOffFactor, initialWaitInMS, nextWaitInMS, totalWaitInMS + nextWaitInMS, maxAllowedWaitInMS, totalRetryCount + 1, maxAllowedRetryCount)
       }
     }
 
